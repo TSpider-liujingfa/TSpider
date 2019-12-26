@@ -1,7 +1,10 @@
 # !/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-class BaseItem:
+import json
+from abc import ABCMeta
+
+class BaseItem(metaclass=ABCMeta):
     def __init__(self, data=None, meta=None, **kwargs):
         if data is None:
             data = {}
@@ -14,15 +17,20 @@ class BaseItem:
     def __getattr__(self, attr):
         return self.data[attr]
 
+    def __str__(self):
+        msg = self.__class__.__name__ + '('
+        msg += ', '.join([key + '=' + str(value) for key, value in self.data.items()])
+        return msg + ')'
+
     def copy(self):
         return self.__class__(self.data.copy(), self.meta.copy())
 
+# 任务
 class Task(BaseItem):
     pass
 
+# 结果
 class Result(BaseItem):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, task, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-    def setTask(self, task):
         self.task = task

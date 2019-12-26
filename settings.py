@@ -1,17 +1,12 @@
 # !/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-from components.base import BaseProcessorComponent, BaseParserComponent, BaseQueueComponent
+from components.base import BaseProcessorComponent, BaseParserComponent
 
-PROCESSOR_COMPONENTS = [
+PROCESSOR_COMPONENT = [
     BaseProcessorComponent
 ]
 
-PARSER_COMPONENTS = [
+PARSER_COMPONENT = [
     BaseParserComponent
 ]
-
-QUEUE_COMPONENTS = [
-    BaseQueueComponent
-]
-

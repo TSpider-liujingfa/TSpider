@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from spider import TSpider
-from src.items import Task
+from src.item import Task
 
 if __name__ == '__main__':
-    start_task = Task(number=1)
-    TSpider(start_task).start()
+    tasks = [Task(id=i*10, _id=i*10) for i in range(3)]
+    TSpider().start(tasks)
